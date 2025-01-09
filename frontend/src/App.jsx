@@ -5,10 +5,12 @@ import Login from './pages/Login/Login'
 import Cart from './pages/Cart/Cart'
 import Collection from './pages/Collection/Collection'
 import ProductDetails from './pages/ProductDetails/ProductDetails'
+import Navbar from './components/Navbar/Navbar'
 
 const App = () => {
   return (
     <div>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path='/login' element={<Login />} />
