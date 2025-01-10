@@ -7,18 +7,18 @@ import arts_and_crafts from '../../assets/artsandcrafts_banner.png'
 
 const Collection = () => {
 
-  const {products} = useContext(ShopContext)
+  const {products, searchTerm} = useContext(ShopContext)
 
   const {category} = useParams();
 
-  const filteredProducts = products.filter((product) => product.category.toLowerCase() === category.toLocaleLowerCase())
+  const filteredProducts = products.filter((product) => product.category.toLowerCase() === category.toLocaleLowerCase()
+  && product.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
 
   const bannerImages = {
     Paper: paper_products,
     WritingMaterials: writing_instruments,
     ArtsandCrafts: arts_and_crafts,
   }
-  
   return (
     <div>
       {/* Banner Section */}

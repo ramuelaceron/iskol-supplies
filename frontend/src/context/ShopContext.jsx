@@ -6,12 +6,19 @@ export const ShopContext = createContext();
 const ShopContextProvide = ({ children }) => {
 
   const currency = '₱';
+  const service_fee = 5;
 
   const [products, setProducts] = useState(product);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const updateSearchTerm = (term) => {
+    setSearchTerm(term);
+  };
 
   const value = {
     products,
-    currency,
+    searchTerm,
+    updateSearchTerm,
   };
 
   return (
