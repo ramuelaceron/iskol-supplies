@@ -6,6 +6,7 @@ import Cart from './pages/Cart/Cart'
 import Collection from './pages/Collection/Collection'
 import ProductDetails from './pages/ProductDetails/ProductDetails'
 import Navbar from './components/Navbar/Navbar'
+import Footer from './components/Footer/Footer'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/category/:category' element={<Collection />} />     {/*Dynamic Routing*/}
         <Route path='/product/:productId' element={<ProductDetails />} />
       </Routes>
+      <Footer />
     </div>
   )
 }
