@@ -41,6 +41,14 @@ import p_img27_3 from './red_hbwpen.png'
 import p_img28 from './scissors.png'
 import p_img29 from './cartolina.png'
 
+import razorpay_logo from './razorpay_logo.png'
+import stripe_logo from './stripe_logo.png'
+
+
+export const assets = {
+    razorpay_logo,
+    stripe_logo,
+}
 
 export const product = [
     {
