@@ -5,7 +5,7 @@ import './ProductDetails.css';
 import RelatedProduct from '../../components/RelatedProduct/RelatedProduct';
 
 const ProductDetails = () => {
-  const { products, currency, addToCart } = useContext(ShopContext);
+  const { products, currency, addToCart } = useContext(ShopContext);  // insert addToCart 
   const { productId } = useParams();
 
   const [productData, setProductData] = useState(null);
@@ -118,7 +118,8 @@ const ProductDetails = () => {
               <p>Several payment options available</p>
             </div>
 
-            <button onClick={() => addToCart(productData._id, size, color, type)} className="add-to-cart-btn">ADD TO CART</button>
+            <button onClick={() => addToCart(productData._id, size, color, type)}  // add onClick event handlers
+                    className="add-to-cart-btn">ADD TO CART</button>
           </div>
         </div>
         <div className="description-review-sect">
