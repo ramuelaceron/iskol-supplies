@@ -87,6 +87,7 @@ const ShopContextProvide = ({ children }) => {
 
   const value = {
     products,
+    service_fee,
     cartItems,
     currency,
     searchTerm,
