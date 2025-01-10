@@ -17,7 +17,7 @@
     text-decoration: none;
   }
 
-/*BestSeller, HomeCollection*/
+/*BestSeller, HomeCollection, Collection*/
 .product-container{
   margin-top: 50px;
 }
@@ -66,4 +66,12 @@
   font-size: 20px;
   color: red;
   padding-bottom: 15px;
+}
+.banner img{
+  width: 1150px;
+  margin-left: -22px;
+}
+.footer-divider{
+  margin-top: 125px;
+  margin-bottom: -20px;
 }
