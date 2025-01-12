@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Sidebar = () => {
+const Order = () => {
   return (
     <div>
-      Sidebar
+      Order
     </div>
   )
 }
 
-export default Sidebar
+export default Order
