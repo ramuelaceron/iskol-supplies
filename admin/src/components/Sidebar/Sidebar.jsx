@@ -6,7 +6,7 @@ import {MdFormatListBulletedAdd, MdAddShoppingCart} from 'react-icons/md'
 import {NavLink} from 'react-router-dom'
 import './Sidebar.css'
 
-const Sidebar = () => {
+const Sidebar = ({setToken}) => {
   
   return (
     <div className='sidebar-container'>
@@ -29,7 +29,7 @@ const Sidebar = () => {
           <MdAddShoppingCart className='sidebar-icon' />
           <p className="sidebar-text">Orders</p>
         </NavLink>
-        <button className="sidebar-link">
+        <button onClick={()=> setToken("")} className="sidebar-link">
           <IoIosLogOut className='sidebar-icon' />
           <p className="sidebar-text">Logout</p>
         </button>
