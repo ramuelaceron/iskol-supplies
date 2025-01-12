@@ -15,3 +15,14 @@ body{
     display: flex;
     width: 100%;
 }
+.page-content{
+    width: 70%;
+    margin: 2rem auto;
+    margin-left: max(5vw, 25px);
+    color: #4a4a4a;
+    font-size: 1rem;
+}
+.active{
+    background-color: rgba(243, 141, 7);
+    border-color: #f3e744;
+}
