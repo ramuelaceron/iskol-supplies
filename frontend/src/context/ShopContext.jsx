@@ -1,6 +1,8 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { product } from '../assets/assets';
 import { toast } from 'react-toastify';
+import axios from 'axios'
+import { backendUrl } from '../App';
 
 export const ShopContext = createContext();
 
@@ -78,6 +80,25 @@ const ShopContextProvide = ({ children }) => {
     return totalAmount;
   };
 
+  const getProductData = async ()=> {
+    try {
+      const response = await axios.get(backendUrl + '/api/product/list')
+      // console.log(response.data)
+      if(response.data.success){
+        setProducts(response.data.products)
+      }else{
+        toast.error(response.data.message)
+      }
+
+    } catch (error) {
+      console.log(error)
+      toast.error(error.message)
+    }
+  }
+
+  useEffect(()=> {
+    getProductData()
+  }, [])
 
   const value = {
     products,
