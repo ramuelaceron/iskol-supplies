@@ -55,14 +55,14 @@ const ProductDetails = () => {
 
             {/* Product Option (e.g., Type) */}
             {productData.productOption && productData.optionValues?.length > 0 && (
-              <div className="choice-selector">
+              <div className="option-selector">
                 <p>Select {productData.productOption}</p>
-                <div className="choice-buttons">
+                <div className="option-buttons">
                   {productData.optionValues.map((item, index) => (
                     <button
                       key={index}
                       onClick={() => setSelectedOption(item)}
-                      className={`choice-button ${item === selectedOption ? 'active-choice' : ''}`}
+                      className={`option-button ${item === selectedOption ? 'active-option' : ''}`}
                     >
                       {item}
                     </button>

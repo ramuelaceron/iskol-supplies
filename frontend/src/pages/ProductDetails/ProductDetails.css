@@ -52,57 +52,22 @@
     color: gray;
 }
 /*FOR COLOR*/
-.choice-selector{
+.option-selector{
     margin: 30px 0;
 }
-.choice-buttons{
+.option-buttons{
     display: flex;
     gap: 5px;
 }
-.choice-button{
+.option-button{
     border: 1.5px solid #000;
     padding: 14px 17px;
     margin-top: 5px;
     background-color: #f3f3f3;
 }
-.choice-button.active-choice{
+.option-button.active-option{
     border-color: red;
 }
-/*FOR SIZE*/
-.size-selector{
-    margin: 30px 0;
-}
-.size-buttons{
-    display: flex;
-    gap: 5px;
-}
-.size-button{
-    border: 1.5px solid #000;
-    padding: 14px 17px;
-    margin-top: 5px;
-    background-color: #f3f3f3;
-}
-.size-button.active-size{
-    border-color: red;
-}
-/*FOR TYPE*/
-.type-selector{
-    margin: 30px 0;
-}
-.type-buttons{
-    display: flex;
-    gap: 5px;
-}
-.type-button{
-    border: 1.5px solid #000;
-    padding: 14px 17px;
-    margin-top: 5px;
-    background-color: #f3f3f3;
-}
-.type-button.active-type{
-    border-color: red;
-}
-
 .product-divider{
     margin-top: 30px;
 }
