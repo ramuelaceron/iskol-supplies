@@ -1,0 +1,71 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-start;
+}
+.form-container p{
+    font-size: 1rem;
+}
+.form-label {
+    margin-top: 0.1rem;
+    margin-bottom: 0.3rem;
+}
+.image-upload-container {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+.upload-preview {
+    width: 8rem;
+    cursor: pointer;
+}
+.form-group {
+    width: 100%;
+}
+.form-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.form-group-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    width: 100%;
+    align-items: center;
+}
+.form-select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 13px;
+}
+.price-input {
+    max-width: 120px;
+}
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
+}
+.submit-button {
+    padding: 0.6rem 4.5rem;
+    max-width: 500px;
+    background-color: #8F0B0B;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 0.8rem;
+}
+.product-options-container{
+    margin-top: 1rem;
+}
+.option-label{
+    margin-top: 1.5rem;
+    margin-bottom: 0.3rem;
+}
