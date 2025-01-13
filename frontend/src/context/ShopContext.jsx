@@ -18,55 +18,48 @@ const ShopContextProvide = ({ children }) => {
   };
 
   // Function to add items to cart
-  const addToCart = async (itemId, size, color, type) => {
-    if (!size && !color && !type) {
-      toast.error('Please select to continue');
+  const addToCart = async (itemId, optionValue) => {
+    if (!optionValue) {
+      toast.error('Please select an option to continue');
       return;
     }
 
     const updatedCart = { ...cartItems };
 
     if (!updatedCart[itemId]) {
-      updatedCart[itemId] = {};
+         updatedCart[itemId] = {[optionValue] : 1}
+    } else {
+         updatedCart[itemId][optionValue] = (updatedCart[itemId][optionValue] || 0) + 1;
     }
-
-    // Set key as the value of color, size and type
-    const key = `${size}${color}${type}`;  
-    updatedCart[itemId][key] = (updatedCart[itemId][key] || 0) + 1;
-
+    
     setCartItems(updatedCart);
 
-    // Adds only one (color, size or type) to the console
-    if (size) {
-        console.log(`Product added to cart: ItemId - ${itemId}, Size - ${size}`);
-    } else if (color) {
-        console.log(`Product added to cart: ItemId - ${itemId}, Color - ${color}`);
-    } else if (type) {
-        console.log(`Product added to cart: ItemId - ${itemId}, Type - ${type}`);
-    }
+    console.log(`Product added to cart: ItemId - ${itemId}, Option - ${optionValue}`);
         
     toast.success('Product added to Cart');
   };
 
-  // Function to get the amount of items in the cart
+  // function to get the amount of items in the cart
   const getCartCount = () => {
     let totalCount = 0;
-    for (const item in cartItems) {
-      for (const variant in cartItems[item]) {
-        totalCount += cartItems[item][variant];
-      }
+    for (const items in cartItems){
+        for (const item in cartItems[items]){
+            if(cartItems[items][item] > 0) {
+                totalCount += cartItems[items][item]
+            }
+        }
     }
     return totalCount;
-  };
+  }
 
-  // Function to update quantity
-  const updateQuantity = async (itemId, key, quantity) => {
-    const cartData = { ...cartItems };
-    if (cartData[itemId] && cartData[itemId][key]) {
-      cartData[itemId][key] = quantity;
-      setCartItems(cartData);
-    }
-  };
+  // FUNCTION TO UPDATE QUANTITY
+  const updatedQuantity = async(itemId, optionValue, quantity) => {
+    let cartData = structuredClone(cartItems)
+
+    cartData[itemId][optionValue] = quantity;
+
+    setCartItems(cartData)
+  }
 
   // Function to get the cart total
   const getCartAmount = () => {
@@ -76,14 +69,15 @@ const ShopContextProvide = ({ children }) => {
       const itemInfo = products.find((product) => product._id === itemId);
 
       if (itemInfo) {
-        for (const key in cartItems[itemId]) {
-          totalAmount += itemInfo.price * cartItems[itemId][key];
+        for (const optionValue in cartItems[itemId]) {
+          totalAmount += itemInfo.price = cartItems[itemId][optionValue];
         }
       }
     }
 
     return totalAmount;
   };
+
 
   const value = {
     products,
@@ -94,7 +88,7 @@ const ShopContextProvide = ({ children }) => {
     updateSearchTerm,
     addToCart,
     getCartCount,
-    updateQuantity,
+    updatedQuantity,
     getCartAmount,
   };
 

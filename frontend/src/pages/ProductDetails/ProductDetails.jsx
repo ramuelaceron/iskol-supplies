@@ -5,23 +5,19 @@ import './ProductDetails.css';
 import RelatedProduct from '../../components/RelatedProduct/RelatedProduct';
 
 const ProductDetails = () => {
-  const { products, currency, addToCart } = useContext(ShopContext);  // insert addToCart 
+  const { products, currency, addToCart } = useContext(ShopContext);
   const { productId } = useParams();
 
   const [productData, setProductData] = useState(null);
   const [image, setImage] = useState('');
-  const [color, setColor] = useState('');
-  const [size, setSize] = useState('');
-  const [type, setType] = useState('');
-
-  const fetchProductData = async() => {
+  const [selectedOption, setSelectedOption] = useState('');
+  
+  const fetchProductData = async () => {
     const foundProduct = products.find((item) => item._id === productId);
     if (foundProduct) {
       setProductData(foundProduct);
-      setImage(foundProduct.image[0]);
-      if (foundProduct.color?.length) setColor(foundProduct.color['']);
-      if (foundProduct.size?.length) setSize(foundProduct.size['']);
-      if (foundProduct.type?.length) setType(foundProduct.type['']);
+      setImage(foundProduct.image[0]); // Set initial image
+      setSelectedOption(foundProduct.optionValues['']); // Set initial option
     }
   };
 
@@ -57,52 +53,16 @@ const ProductDetails = () => {
             </p>
             <p className="product-description">{productData.description}</p>
 
-            {/* COLOR SELECTION */}
-            {productData.color?.length > 0 && (
+            {/* Product Option (e.g., Type) */}
+            {productData.productOption && productData.optionValues?.length > 0 && (
               <div className="choice-selector">
-                <p>Select Color</p>
+                <p>Select {productData.productOption}</p>
                 <div className="choice-buttons">
-                  {productData.color.map((item, index) => (
+                  {productData.optionValues.map((item, index) => (
                     <button
                       key={index}
-                      onClick={() => setColor(item)}
-                      className={`choice-button ${item === color ? 'active-choice' : ''}`}
-                    >
-                      {item}
-                    </button>
-                  ))}
-                </div>
-              </div>	
-            )}
-
-            {/* SIZE SELECTION */}
-            {productData.size?.length > 0 && (
-              <div className="choice-selector">
-                <p>Select Size</p>
-                <div className="choice-buttons">
-                  {productData.size.map((item, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setSize(item)}
-                      className={`choice-button ${item === size ? 'active-choice' : ''}`}
-                    >
-                      {item}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* TYPE SELECTION */}
-            {productData.type?.length > 0 && (
-              <div className="choice-selector">
-                <p>Select Type</p>
-                <div className="choice-buttons">
-                  {productData.type.map((item, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setType(item)}
-                      className={`choice-button ${item === type ? 'active-choice' : ''}`}
+                      onClick={() => setSelectedOption(item)}
+                      className={`choice-button ${item === selectedOption ? 'active-choice' : ''}`}
                     >
                       {item}
                     </button>
@@ -118,8 +78,12 @@ const ProductDetails = () => {
               <p>Several payment options available</p>
             </div>
 
-            <button onClick={() => addToCart(productData._id, size, color, type)}  // add onClick event handlers
-                    className="add-to-cart-btn">ADD TO CART</button>
+            <button
+              onClick={() => addToCart(productData._id, selectedOption)} // Add to cart with selected option
+              className="add-to-cart-btn"
+            >
+              ADD TO CART
+            </button>
           </div>
         </div>
         <div className="description-review-sect">
@@ -142,7 +106,7 @@ const ProductDetails = () => {
             </p>
           </div>
         </div>
-        <RelatedProduct category={productData.category}/>
+        <RelatedProduct category={productData.category} />
       </div>
     </div>
   ) : (
@@ -151,4 +115,3 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
-

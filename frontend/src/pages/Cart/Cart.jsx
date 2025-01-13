@@ -6,7 +6,7 @@ import './Cart.css'
 
 const Cart = () => {
 
-  const {products, currency, cartItems, updateQuantity} = useContext(ShopContext)
+  const {products, currency, cartItems, updatedQuantity} = useContext(ShopContext)
 
   const [cartData, setCartData] = useState([])
 
@@ -18,10 +18,10 @@ const Cart = () => {
       return;
     }
 
-    const tempData = Object.entries(cartItems).flatMap(([itemId, choices]) =>
-    Object.entries(choices).filter(([, quantity]) => quantity > 0).map(([choice, quantity]) => ({
+    const tempData = Object.entries(cartItems).flatMap(([itemId, optionValues]) =>
+    Object.entries(optionValues).filter(([, quantity]) => quantity > 0).map(([optionValue, quantity]) => ({
       _id: itemId,
-      choice,
+      optionValue,
       quantity
     })) 
     )
@@ -40,17 +40,17 @@ const Cart = () => {
                   <img src={productData.image[0]} alt="" className='product-cart-image'/>
                   <div className="product-details-cart">
                     <p className="cart-product-name">{productData.name}</p>
-                    <div className="product-price-choice">
+                    <div className="product-price-optionValue">
                       <p className='cart-product-price'>{currency} {productData.price}.00</p>
-                      <p className="size">{item.choice}</p>
+                      <p className="optionValue">{item.optionValue}</p>
                     </div>
                   </div>
                 </div>
 
                 <input type="number" className='quantity-input' min={1} defaultValue={item.quantity}
-                onChange={(e) => e.target.value === '' || e.target.value === 0 ? null : updateQuantity(item._id, item.choice, Number(e.target.value))} />
+                onChange={(e) => e.target.value === '' || e.target.value === 0 ? null : updatedQuantity(item._id, item.optionValue, Number(e.target.value))} />
               
-                <MdDelete className='delete-icon' onClick={()=> updateQuantity(item._id, item.choice, 0)} />
+                <MdDelete className='delete-icon' onClick={()=> updateQuantity(item._id, item.optionValue, 0)} />
               </div>
             ) 
           })
