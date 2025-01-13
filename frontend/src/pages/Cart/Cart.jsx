@@ -40,7 +40,7 @@ const Cart = () => {
                   <img src={productData.image[0]} alt="" className='product-cart-image'/>
                   <div className="product-details-cart">
                     <p className="cart-product-name">{productData.name}</p>
-                    <div className="product-price-optionValue">
+                    <div className="product-price-size">
                       <p className='cart-product-price'>{currency} {productData.price}.00</p>
                       <p className="optionValue">{item.optionValue}</p>
                     </div>
@@ -50,7 +50,7 @@ const Cart = () => {
                 <input type="number" className='quantity-input' min={1} defaultValue={item.quantity}
                 onChange={(e) => e.target.value === '' || e.target.value === 0 ? null : updatedQuantity(item._id, item.optionValue, Number(e.target.value))} />
               
-                <MdDelete className='delete-icon' onClick={()=> updateQuantity(item._id, item.optionValue, 0)} />
+                <MdDelete className='delete-icon' onClick={()=> updatedQuantity(item._id, item.optionValue, 0)} />
               </div>
             ) 
           })

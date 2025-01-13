@@ -70,7 +70,7 @@ const ShopContextProvide = ({ children }) => {
 
       if (itemInfo) {
         for (const optionValue in cartItems[itemId]) {
-          totalAmount += itemInfo.price = cartItems[itemId][optionValue];
+          totalAmount += itemInfo.price * cartItems[itemId][optionValue];
         }
       }
     }
