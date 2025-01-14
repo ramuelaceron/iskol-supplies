@@ -15,6 +15,8 @@ const ShopContextProvide = ({ children }) => {
   const [products, setProducts] = useState(product);
   const [searchTerm, setSearchTerm] = useState('');
 
+  const [token, setToken] = useState('')
+
   const updateSearchTerm = (term) => {
     setSearchTerm(term);
   };
@@ -111,6 +113,8 @@ const ShopContextProvide = ({ children }) => {
     getCartCount,
     updatedQuantity,
     getCartAmount,
+    token,
+    setToken
   };
 
   return (

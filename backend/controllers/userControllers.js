@@ -21,7 +21,7 @@ const loginUser = async (req,res) => {
 
         if (isMatch) {
             const token = createToken(user._id);
-            res.json({success:true, token})
+            res.json({success:true, message:"Login Successfully", token})
         }
         else{
             res.json({success:false, message:"Incorrect password entered"})
@@ -62,7 +62,7 @@ const registerUser = async (req,res) => {
 
         const user = await newUser.save();
         const token = createToken(user._id)
-        res.json({sucess: true, token})
+        res.json({sucess: true, message:"Account created successfully", token})
 
         
     } catch (error) {
