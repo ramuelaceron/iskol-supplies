@@ -22,25 +22,36 @@ const ShopContextProvide = ({ children }) => {
   };
 
   // Function to add items to cart
-  const addToCart = async (itemId, optionValue) => {
-    if (!optionValue) {
+  const addToCart = async (ItemId, optionValues) => {
+    if (!optionValues) {
       toast.error('Please select an option to continue');
       return;
     }
 
     const updatedCart = { ...cartItems };
 
-    if (!updatedCart[itemId]) {
-         updatedCart[itemId] = {[optionValue] : 1}
+    if (!updatedCart[ItemId]) {
+         updatedCart[ItemId] = {[optionValues] : 1}
     } else {
-         updatedCart[itemId][optionValue] = (updatedCart[itemId][optionValue] || 0) + 1;
+         updatedCart[ItemId][optionValues] = (updatedCart[ItemId][optionValues] || 0) + 1;
     }
     
     setCartItems(updatedCart);
 
-    console.log(`Product added to cart: ItemId - ${itemId}, Option - ${optionValue}`);
+    console.log(`Product added to cart: ItemId - ${ItemId}, Option - ${optionValues}`);
         
     toast.success('Product added to Cart');
+    
+    
+    if(token){
+      try {
+        await axios.post(backendUrl + '/api/cart/add', {ItemId, optionValues}, {headers: {token}})
+      } catch (error) {
+        console.log(error)
+        toast.error(error.message)
+      }
+    }
+
   };
 
   // function to get the amount of items in the cart
@@ -57,24 +68,47 @@ const ShopContextProvide = ({ children }) => {
   }
 
   // FUNCTION TO UPDATE QUANTITY
-  const updatedQuantity = async(itemId, optionValue, quantity) => {
+  const updatedQuantity = async(ItemId, optionValues, quantity) => {
     let cartData = structuredClone(cartItems)
 
-    cartData[itemId][optionValue] = quantity;
+    cartData[ItemId][optionValues] = quantity;
 
     setCartItems(cartData)
+
+    if(token){
+      try {
+        await axios.post(backendUrl + '/api/cart/update', {ItemId, optionValues, quantity}, {headers: {token}})
+      } catch (error) {
+        console.log(error)
+        toast.error(error.message)
+      }
+    }
+
   }
+
+  const getUserCart = async(token) => {
+    try {
+      const response = await axios.post(backendUrl + '/api/cart/get', {}, {headers: {token}})
+      if(response.data.success){
+        setCartItems(response.data.cartData)
+      }
+    } catch (error) {
+      console.log(error)
+      toast.error(error.message)
+    }
+  }
+
 
   // Function to get the cart total
   const getCartAmount = () => {
     let totalAmount = 0;
 
-    for (const itemId in cartItems) {
-      const itemInfo = products.find((product) => product._id === itemId);
+    for (const ItemId in cartItems) {
+      const itemInfo = products.find((product) => product._id === ItemId);
 
       if (itemInfo) {
-        for (const optionValue in cartItems[itemId]) {
-          totalAmount += itemInfo.price * cartItems[itemId][optionValue];
+        for (const optionValues in cartItems[ItemId]) {
+          totalAmount += itemInfo.price * cartItems[ItemId][optionValues];
         }
       }
     }
@@ -100,6 +134,13 @@ const ShopContextProvide = ({ children }) => {
 
   useEffect(()=> {
     getProductData()
+  }, [])
+
+  useEffect(()=>{
+    if (!token && localStorage.getItem('token')){
+      setToken(localStorage.getItem('token'));
+      getUserCart(localStorage.getItem('token'))
+    }
   }, [])
 
   const value = {
