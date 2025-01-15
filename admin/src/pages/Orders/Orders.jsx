@@ -116,6 +116,7 @@ const Orders = ({ token }) => {
                 <option value="Order Placed">Order Placed</option>
                 <option value="Packing">Packing</option>
                 <option value="Out of Order">Out of Order</option>
+                <option value="Order Payed">Order Payed</option>
               </select>
             </div>
           </div>
