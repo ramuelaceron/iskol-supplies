@@ -136,7 +136,7 @@ const Checkout = () => {
                     name="yearAndCourse"
                     value={formData.yearAndCourse}
                     className="form-input"
-                    placeholder="Year & Course"
+                    placeholder="Year & Section"
                     onChange={onChangeHandler}
                 />
                 <input 
