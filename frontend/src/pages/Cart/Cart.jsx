@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { ShopContext } from '../../context/ShopContext'
 import {MdDelete} from 'react-icons/md'
 import CartTotal from '../../components/CartTotal/CartTotal'
@@ -9,6 +10,7 @@ const Cart = () => {
   const {products, currency, cartItems, updatedQuantity} = useContext(ShopContext)
 
   const [cartData, setCartData] = useState([])
+  const navigate = useNavigate();
 
   useEffect(() => {
     if(products.length === 0) return;
@@ -60,7 +62,7 @@ const Cart = () => {
         <div className="checkout-box">
           <CartTotal />
           <div className="checkout-button-container">
-            <button className="checkout-button">PROCCEED TO CHECKOUT</button>
+            <button onClick={() => navigate('/checkout')} className="checkout-button" >PROCCEED TO CHECKOUT</button>
           </div>
         </div>
       </div>

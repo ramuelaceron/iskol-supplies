@@ -5,7 +5,6 @@
     width: 90%;
     max-width: 24rem;
     margin: 3.5rem auto;
-    gap: 1rem;
     color: #4a4a4a;
 }
 .form-header{
@@ -16,6 +15,7 @@
 }
 .form-title{
     font-size: 1.875rem;
+    margin-bottom: 1rem;
 }
 .form-input{
     width: 100%;
@@ -32,6 +32,7 @@
 }
 .forgot-pswd, .toggle-auth-state{
     cursor: pointer;
+
 }
 .form-button{
     background-color: #8F0B0B;

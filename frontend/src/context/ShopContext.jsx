@@ -155,7 +155,8 @@ const ShopContextProvide = ({ children }) => {
     updatedQuantity,
     getCartAmount,
     token,
-    setToken
+    setToken,
+    setCartItems
   };
 
   return (
