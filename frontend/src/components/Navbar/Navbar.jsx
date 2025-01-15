@@ -58,7 +58,10 @@ const Navbar = () => {
               <BiUser className='icon'/>
               <div className="dropdown-menu">
                 <Link to='/login'>
-                  <p className="dropdown-item">Account</p>
+                  <p className="dropdown-item">Login/Sign Up</p>
+                </Link>
+                <Link to='/order'>
+                <p className="dropdown-item">Orders</p>
                 </Link>
                   <p onClick={logout} className="dropdown-item">Logout</p>
               </div>
