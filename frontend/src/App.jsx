@@ -10,6 +10,7 @@ import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import Order from './pages/Order/Order'
 
 
 export const backendUrl = 'http://localhost:4000'
@@ -23,9 +24,10 @@ const App = () => {
         <Route path="/" element={<Home />}/>
         <Route path='/login' element={<Login />} />
         <Route path='/cart' element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
         <Route path='/category/:category' element={<Collection />} />     {/*Dynamic Routing*/}
         <Route path='/product/:productId' element={<ProductDetails />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/order" element={<Order />} />
       </Routes>
       <Footer />
     </div>
