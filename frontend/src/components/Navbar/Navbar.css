@@ -117,6 +117,8 @@
     font-size: 60px;
     animation: spin 1s linear infinite;
     color: #FFDF00;
+    width: 4rem;
+    height: 4rem;
 }
 
 @keyframes spin{

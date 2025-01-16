@@ -1,9 +1,10 @@
 import React, {useContext, useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import {BiUser, BiCart} from 'react-icons/bi'
-import {FaCentos} from 'react-icons/fa'
+
 import './Navbar.css'
 import { ShopContext } from '../../context/ShopContext'
+import pupLogo from '../../assets/pupbc.png'
 
 const Navbar = () => {
 
@@ -38,7 +39,7 @@ const Navbar = () => {
       {
         loading && (
           <div className="loader-container">
-            <div className="loader"><FaCentos className='loader-icon'/></div>
+            <div className="loader"><img src={pupLogo} alt="PUP Logo" className='loader-icon' /></div>
           </div>
         )
       }
