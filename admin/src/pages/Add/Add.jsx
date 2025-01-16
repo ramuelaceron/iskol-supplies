@@ -125,8 +125,8 @@ const Add = ({token}) => {
             className="form-select"
           >
             <option value="Paper">Paper</option>
-            <option value="WritingMaterials">Writing Materials</option>
-            <option value="ArtsandCrafts">Arts and Crafts</option>
+            <option value="Writing Materials">Writing Materials</option>
+            <option value="Arts and Crafts">Arts and Crafts</option>
           </select>
         </div>
         <div>

@@ -75,8 +75,8 @@ const Navbar = () => {
         <div className="nav-bottom">
           <div className="nav-container">
             <div onClick={()=>handleNavigation("/category/Paper")} className="navbar-link">Paper</div>
-            <div onClick={()=>handleNavigation("/category/WritingMaterials")} className="navbar-link">Writing Materials</div>
-            <div onClick={()=>handleNavigation("/category/ArtsandCrafts")} className="navbar-link">Arts and Crafts</div>
+            <div onClick={()=>handleNavigation("/category/Writing Materials")} className="navbar-link">Writing Materials</div>
+            <div onClick={()=>handleNavigation("/category/Arts and Crafts")} className="navbar-link">Arts and Crafts</div>
           </div>
         </div>
       </nav>

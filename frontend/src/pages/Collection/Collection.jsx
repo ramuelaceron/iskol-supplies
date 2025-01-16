@@ -16,8 +16,8 @@ const Collection = () => {
 
   const bannerImages = {
     Paper: paper_products,
-    WritingMaterials: writing_instruments,
-    ArtsandCrafts: arts_and_crafts,
+    "Writing Materials": writing_instruments,
+    "Arts and Crafts": arts_and_crafts,
   }
   return (
     <div>
