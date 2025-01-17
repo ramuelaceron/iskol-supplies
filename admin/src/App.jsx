@@ -8,15 +8,15 @@ import Login from "./components/Login/Login";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const backendUrl = "http://localhost:4000";
-export const currency = "₱"
+export const backendUrl = "http://localhost:8080";
+export const currency = "₱";
 
 const App = () => {
-  const [token, setToken] = useState(localStorage.getItem('token' || ''));
+  const [token, setToken] = useState(localStorage.getItem("token" || ""));
 
-  useEffect(()=> {
-    localStorage.setItem('token', token)
-  }, [token])
+  useEffect(() => {
+    localStorage.setItem("token", token);
+  }, [token]);
 
   return (
     <div className="app-container">
@@ -26,12 +26,12 @@ const App = () => {
       ) : (
         <>
           <div className="app-content">
-            <Sidebar setToken={setToken}/>
+            <Sidebar setToken={setToken} />
             <div className="page-content">
               <Routes>
-                <Route path="/add" element={<Add token={token}/>} />
-                <Route path="/list" element={<List token={token}/>} />
-                <Route path="/orders" element={<Orders token={token}/>} />
+                <Route path="/add" element={<Add token={token} />} />
+                <Route path="/list" element={<List token={token} />} />
+                <Route path="/orders" element={<Orders token={token} />} />
               </Routes>
             </div>
           </div>
