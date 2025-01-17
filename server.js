@@ -7,10 +7,9 @@ import userRouter from "./routes/userRoute.js";
 import productRouter from "./routes/productRoute.js";
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
-
+import path from "path";
 
 const app = express();
-const path = require("path");
 const port = process.env.PORT || 8080;
 connectDB();
 connectCloudinary();
