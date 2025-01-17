@@ -12,7 +12,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Order from "./pages/Order/Order";
 
-export const backendUrl = "http://localhost:8080";
+export const backendUrl = "";
 
 const App = () => {
   return (

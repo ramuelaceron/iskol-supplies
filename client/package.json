@@ -1,5 +1,4 @@
-{
-  "name": "frontend",
+{ "name": "frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,6 +8,7 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "axios": "^1.7.9",
     "react": "^18.3.1",
